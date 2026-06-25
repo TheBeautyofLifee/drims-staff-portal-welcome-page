@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRIMS - Staff Portal | UMI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="hero-banner">
+        <div class="hero-container">
+            <img src="/public/logo.png" alt="Uganda Management Institute Logo" class="umi-logo">
+            <h1>Staff Portal</h1>
+            <p class="description">
+                Manage assigned postgraduate workloads, review draft submissions, track research lifecycles, and communicate securely with your research candidates.
+            </p>
+        </div>
+        <div class="nav-menu">
+          <a href="#" class="btn-view-docs active" title="Staff Home">Home</a>
+          <a href="#pwa-section" class="btn-view-docs" title="Jump to PWA Installation Guide">App Installation</a>
+          <a href="#downloads-section" class="btn-view-docs" title="Jump to Downloadable Materials">Downloads</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="portal-access-container">
+            <div class="portal-main-card">
+                <div class="portal-icon-wrapper"><i class="fa-solid fa-briefcase"></i></div>
+                <h2 class="portal-headline">Secure Login Gateway</h2>
+                <p class="portal-subheadline"> Please have your verified <b>official email address</b> and secure password with you before signing in.</p>
+                
+                <div class="portal-actions-wrapper">
+                    <a href="https://drimstaff.umi.ac.ug/login" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        Launch Staff Portal <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    
+                    <div class="copy-textbox-container">
+                        <input type="text" value="https://drimstaff.umi.ac.ug/login" readonly id="portalUrlInput" class="copy-input" aria-label="Portal URL Address">
+                        <button class="btn-copy-action" onclick="copyLinkFromInput('portalUrlInput', this)" title="Copy Portal URL">
+                            <i class="fa-solid fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-separator" id="pwa-section">
+
+        <section>
+            <h2 class="section-title">Install as a Web App (PWA)</h2>
+            <p class="section-subtitle">Access the DRIMS Staff Portal directly from your home screen or desktop without opening a browser.</p>
+            
+            <div class="manuals-grid">
+                <div class="manual-card">
+                    <div class="manual-info">
+                        <div class="manual-file-icon" style="color: var(--primary);"><i class="fa-solid fa-desktop"></i></div>
+                        <div class="manual-meta">
+                            <h3>On Laptop or Desktop Computer</h3>
+                            <p style="font-size: 0.9rem; margin-top: 0.25rem; line-height: 1.4;">
+                                1. Launch the portal using Google Chrome or Microsoft Edge.<br>
+                                2. Look at the right side of your browser address bar.<br>
+                                3. Click the <b>Install App</b> icon (<i class="fa-solid fa-download" style="font-size: 0.8rem;"></i>) or select "Install DRIMS..." from the browser menu settings.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="section-separator" id="downloads-section">
+
+        <section>
+            <h2 class="section-title">Reference Guides</h2>
+            <p class="section-subtitle">Download available step-by-step manuals</p>
+            
+            <div class="manuals-grid">
+                <div class="manual-card">
+                    <div class="manual-info">
+                        <div class="manual-file-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                        <div class="manual-meta">
+                            <h3>DRIMS Staff Portal User Manual</h3>
+                            <p>Comprehensive supervisor system walkthrough covering the central dashboard, student tracking directory, direct messaging, and draft feedback reviews.</p>
+                            <span class="file-spec">PDF • 4.5 MB</span>
+                        </div>
+                    </div>
+                    <a href="/public/DRIMS DOCS_Staff Portal Manual.pdf" target="_blank" rel="noopener noreferrer" class="btn-download" title="View Manual">
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Uganda Management Institute (UMI). All rights reserved.</p>
+    </footer>
+
+    <script>
+        function copyLinkFromInput(inputId, buttonElement) {
+            const copyText = document.getElementById(inputId);
+            
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); 
+
+            navigator.clipboard.writeText(copyText.value).then(() => {
+                const originalMarkup = buttonElement.innerHTML;
+                const container = buttonElement.parentElement;
+                
+                buttonElement.innerHTML = '<i class="fa-solid fa-check"></i>';
+                container.classList.add('copied-state');
+                buttonElement.disabled = true;
+
+                setTimeout(() => {
+                    buttonElement.innerHTML = originalMarkup;
+                    container.classList.remove('copied-state');
+                    buttonElement.disabled = false;
+                }, 1800);
+            }).catch(err => {
+                console.error('Execution failure on copy utility: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
